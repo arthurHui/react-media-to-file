@@ -1,0 +1,22 @@
+{
+  "name": "react-media-to-file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "arthurhui",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "siriwave": "^2.3.0",
+    "tslib": "^2.5.0"
+  }
+}
