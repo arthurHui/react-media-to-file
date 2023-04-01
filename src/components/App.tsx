@@ -77,7 +77,7 @@ const Recorder = ({
     }, [audioChunks]);
 
     useEffect(() => {
-        let navigator = (window.navigator as any)
+        const navigator = (window.navigator as any)
         navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
         if (navigator.mediaDevices.getUserMedia) {
