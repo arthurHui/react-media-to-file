@@ -2,22 +2,3 @@
     width: 100px;
     height: 100px;
 }
-
-#siriwave-container {
-    text-align: center;
-    background-color: #000000;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 100px;
-    border: 5px solid #eee;
-    position: relative;
-}
-
-#siriwave-container canvas {
-    transform: scale(3);
-    position: absolute;
-    top: 10%;
-    left: 0;
-}

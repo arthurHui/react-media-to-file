@@ -1,17 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react'
-import SiriWave from "siriwave";
+import React, { useState, useEffect, useRef, ReactNode } from 'react'
 
 type porps = {
     onFinished: Function,
+    onStop?: Function
     mimeType?: string,
+    child: ReactNode,
+    containerClass: string
 }
 
 const Recorder = ({
     onFinished,
-    mimeType = 'audio/webm;codecs=opus'
+    onStop,
+    mimeType = 'audio/webm;codecs=opus',
+    child,
+    containerClass,
 }: porps) => {
 
-    const siriWave = useRef<SiriWave | null>(null);
     const mediaRecorder = useRef<MediaRecorder | null>(null);
     const mediaStream = useRef<MediaStream | null>(null);
     const [permission, setPermission] = useState(false);
@@ -39,7 +43,7 @@ const Recorder = ({
         if (mediaRecorder.current) {
             mediaRecorder.current.stop();
             mediaRecorder.current.onstop = () => {
-                console.log('!!!onstop');
+                !!onStop && onStop()
             };
         }
     };
@@ -105,18 +109,11 @@ const Recorder = ({
                     setPermission(false);
                 });
         }
-        const newSiriWave = new SiriWave({
-            container: document.getElementById("siriwave-container")!,
-            style: 'ios9',
-            cover: true,
-            amplitude: 0.1
-        });
-        siriWave.current = newSiriWave
     }, [])
 
     return (
-        <div className='recorder-container'>
-            <div id="siriwave-container" onClick={() => { recording(isRecording) }}></div>
+        <div className={`recorder-container ${containerClass}`} onClick={() => { recording(isRecording) }}>
+            {child}
         </div>
     )
 }
